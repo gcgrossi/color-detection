@@ -151,7 +151,7 @@ def get_colormap(color_dict,sort=False):
         colormap.append((c,f))
         
     return colormap
- ````
+ ```
  
  #### *Functions to create colormap visualizations in Plotly*
 
@@ -161,7 +161,7 @@ We then create the visualisations using plotly library.
 
 ```make_bar_chart()```: we create also a simpler bar chart with the top-ten colors and their respective fequencies.
 
-````python
+```python
 def make_color_plot(colormap,h=1000,w=1000):
     # create a sliced chart with 
     # all the detected colors
@@ -226,8 +226,8 @@ def make_color_plot(colormap,h=1000,w=1000):
     fig.show()
     
     return
-    
- ````
+ ```
+ 
  #### *Clustering pixels*
 
 It's now time to use the SLIC alogorithm provided by Sci-kit image, along with the hacked function we defined, to obtain the color information we need for our analysis plotting. 
@@ -236,7 +236,7 @@ The ```n_segments``` parameter is the actual number of labels in which the image
 
 These parameters should be treated as model's hyperparameters. Given the target result they need to be tweaked by trying different combinations.
 
-````python
+```python
 # get the labels corresponding to the clustered pixels
 labels1 = segmentation.slic(img, compactness=30, n_segments=300)
 
@@ -247,7 +247,7 @@ out1 = color_info["image"]
 
 # N.B orginal Sci-kit image function
 #out1 = color.label2rgb(labels1, img, kind='avg')
-````
+```
 
 #### *Create Region Adjiacency Graph (RAG)*
 
@@ -257,7 +257,7 @@ The function ```cut_threshold()``` creates a new set of labels by combining the 
 
 The threshold value should again be considered as an hyperparameter to be optimized based on the target result.
 
-````python
+```python
 # create a RAG
 g = graph.rag_mean_color(img, labels1)
 
@@ -272,7 +272,7 @@ out2 = segmentation.mark_boundaries(out2, labels2, (0, 0, 0))
 
 # N.B orginal Sci-kit image function
 #out2 = color.label2rgb(labels2, img, kind='avg')
-````
+```
 
 #### *Get colormap and plot*
 
@@ -280,17 +280,17 @@ we can now move on to the actual plotting of our processed image by retrieving t
 
 As You can see the image is mostly black/brown (for the shadow), orange/red (for the flames).
 
-````python
+```python
 colormap = get_colormap(color_info2,sort=True)
 make_color_plot(colormap)
 make_bar_chart(colormap)
-````
+```
 
 #### *Show the processed images*
 
 We can also show the image in the processing step. You can see the nice "Impressionist" style we obtain, of course losing some detail of the image. A nice romantic interpretation of this ancient demon that perfectly represents my love for the Lord of the Rings!
 
-````python
+```python
 fig = make_subplots(rows=1, cols=3)
 fig.add_trace(px.imshow(img).data[0],row=1, col=1)
 fig.add_trace(px.imshow(out1).data[0],row=1, col=2)
@@ -298,7 +298,7 @@ fig.add_trace(px.imshow(out2).data[0],row=1, col=3)
 fig.update_xaxes(showticklabels=False)
 fig.update_yaxes(showticklabels=False)
 fig.show()
-````
+```
 
 I hope you enjoyed this Notebook and if you arrived till the end, Congratulations! 
 
