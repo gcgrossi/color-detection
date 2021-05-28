@@ -63,6 +63,8 @@ fig.update_xaxes(showticklabels=False)
 fig.show()
 ```
 
+<img src="images/balrog.jpg">
+
 #### *Hack the sci-kit image function 'color.label2rgb()'*
 <a href="https://github.com/scikit-image/scikit-image/blob/main/skimage/color/colorlabel.py#L74-L124">[source]</a>
 
@@ -119,7 +121,7 @@ def color_masks(label_field, image, bg_label=0, bg_color=(0, 0, 0)):
     return color_info
     
  ```
-    
+ 
 #### *Function to construct the colormap*
 
 We then define a function to contruct the colormap that returns a tuple color (r,g,b), frequency. There is the possibility to sort the colors by frequency in descending order.
@@ -153,7 +155,7 @@ def get_colormap(color_dict,sort=False):
     return colormap
  ```
  
- #### *Functions to create colormap visualizations in Plotly*
+#### *Functions to create colormap visualizations in Plotly*
 
 We then create the visualisations using plotly library. 
 
@@ -286,6 +288,9 @@ make_color_plot(colormap)
 make_bar_chart(colormap)
 ```
 
+<img src="images/colorgrid.png">
+<img src="images/colorchart.png">
+
 #### *Show the processed images*
 
 We can also show the image in the processing step. You can see the nice "Impressionist" style we obtain, of course losing some detail of the image. A nice romantic interpretation of this ancient demon that perfectly represents my love for the Lord of the Rings!
@@ -299,6 +304,8 @@ fig.update_xaxes(showticklabels=False)
 fig.update_yaxes(showticklabels=False)
 fig.show()
 ```
+
+<img src="images/balrog_segmented.png">
 
 I hope you enjoyed this Notebook and if you arrived till the end, Congratulations! 
 
