@@ -230,7 +230,7 @@ def make_color_plot(colormap,h=1000,w=1000):
     return
  ```
  
- #### *Clustering pixels*
+#### *Clustering pixels*
 
 It's now time to use the SLIC alogorithm provided by Sci-kit image, along with the hacked function we defined, to obtain the color information we need for our analysis plotting. 
 
